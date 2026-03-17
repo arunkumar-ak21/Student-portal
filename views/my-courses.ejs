@@ -1,0 +1,83 @@
+<%- include("partials/header") %>
+
+<div class="container-fluid dashboard-wrapper">
+  <div class="row">
+    <div class="col-md-2 sidebar">
+      <h4 class="mb-4">University Portal</h4>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2"><a href="/dashboard" class="nav-link">Dashboard</a></li>
+        <li class="nav-item mb-2"><a href="/my-courses" class="nav-link active">My Courses</a></li>
+        <li class="nav-item mb-2"><a href="/profile" class="nav-link">Profile</a></li>
+        <li class="nav-item mb-2"><a href="/logout" class="nav-link">Logout</a></li>
+      </ul>
+    </div>
+
+    <div class="col-md-10 p-4">
+      <div class="top-card mb-4">
+        <h3>My Courses</h3>
+        <p>View available courses and your registered courses.</p>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-white">
+          <h5 class="mb-0">Available Courses</h5>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Course Code</th>
+                  <th>Course Name</th>
+                  <th>Instructor</th>
+                  <th>Credits</th>
+                  <th>Schedule</th>
+                  <th>Seats</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% courses.forEach(course => { %>
+                  <tr>
+                    <td><%= course.courseCode %></td>
+                    <td><%= course.courseName %></td>
+                    <td><%= course.instructor %></td>
+                    <td><%= course.credits %></td>
+                    <td><%= course.schedule %></td>
+                    <td><%= course.seatsAvailable %></td>
+                    <td>
+                      <form action="/register-course/<%= course._id %>" method="POST">
+                        <button class="btn btn-success btn-sm">Register</button>
+                      </form>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm">
+        <div class="card-header bg-white">
+          <h5 class="mb-0">My Registered Courses</h5>
+        </div>
+        <div class="card-body">
+          <% if (user.registeredCourses.length === 0) { %>
+            <p>No courses registered yet.</p>
+          <% } else { %>
+            <ul class="list-group">
+              <% user.registeredCourses.forEach(course => { %>
+                <li class="list-group-item">
+                  <strong><%= course.courseCode %></strong> - <%= course.courseName %>
+                </li>
+              <% }) %>
+            </ul>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer") %>

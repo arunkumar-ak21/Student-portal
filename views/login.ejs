@@ -1,0 +1,31 @@
+<%- include("partials/header") %>
+
+<div class="auth-page login-bg">
+  <div class="auth-card">
+    <h3 class="text-center mb-4">Student Login</h3>
+
+    <% if (error) { %>
+      <div class="alert alert-danger"><%= error %></div>
+    <% } %>
+
+    <form action="/login" method="POST">
+      <div class="mb-3">
+        <label>College Email ID</label>
+        <input type="email" name="collegeEmail" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+
+      <p class="text-center mt-3">
+        Don't have an account? <a href="/register">Register here</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+<%- include("partials/footer") %>

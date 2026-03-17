@@ -1,0 +1,1 @@
+console.log("Student Registration App loaded");

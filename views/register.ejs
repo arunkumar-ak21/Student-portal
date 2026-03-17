@@ -1,0 +1,84 @@
+<%- include("partials/header") %>
+
+<div class="auth-page">
+  <div class="auth-card">
+    <h3 class="text-center mb-4">Student Registration</h3>
+
+    <% if (error) { %>
+      <div class="alert alert-danger"><%= error %></div>
+    <% } %>
+
+    <% if (success) { %>
+      <div class="alert alert-success"><%= success %></div>
+    <% } %>
+
+    <form action="/register" method="POST">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label>First Name</label>
+          <input type="text" name="firstName" class="form-control" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>Middle Name</label>
+          <input type="text" name="middleName" class="form-control">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>Last Name</label>
+          <input type="text" name="lastName" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>SRN</label>
+          <input type="text" name="srn" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>Department</label>
+          <input type="text" name="department" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>College Email ID</label>
+          <input type="email" name="collegeEmail" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>Personal Email ID</label>
+          <input type="email" name="personalEmail" class="form-control">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>Phone Number</label>
+          <input type="text" name="phone" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>Semester</label>
+          <input type="number" name="semester" class="form-control" min="1" max="8" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>Password</label>
+          <input type="password" name="password" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>Confirm Password</label>
+          <input type="password" name="confirmPassword" class="form-control" required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Register</button>
+
+      <p class="text-center mt-3">
+        Already have an account? <a href="/login">Login here</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+<%- include("partials/footer") %>

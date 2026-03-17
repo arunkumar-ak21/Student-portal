@@ -1,0 +1,59 @@
+<%- include("partials/header") %>
+
+<div class="container-fluid dashboard-wrapper">
+  <div class="row">
+    <div class="col-md-2 sidebar">
+      <h4 class="mb-4">University Portal</h4>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2"><a href="/dashboard" class="nav-link active">Dashboard</a></li>
+        <li class="nav-item mb-2"><a href="/my-courses" class="nav-link">My Courses</a></li>
+        <li class="nav-item mb-2"><a href="/profile" class="nav-link">Profile</a></li>
+        <li class="nav-item mb-2"><a href="/logout" class="nav-link">Logout</a></li>
+      </ul>
+    </div>
+
+    <div class="col-md-10 p-4">
+      <div class="top-card mb-4">
+        <h3>Welcome Back, <%= user.firstName %>!</h3>
+        <p>Manage your course registration and account details here.</p>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="stats-card">
+            <h6>Registered Courses</h6>
+            <h3><%= user.registeredCourses.length %></h3>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="stats-card">
+            <h6>Department</h6>
+            <h3><%= user.department %></h3>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="stats-card">
+            <h6>Semester</h6>
+            <h3><%= user.semester %></h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm">
+        <div class="card-header bg-white">
+          <h5 class="mb-0">Student Summary</h5>
+        </div>
+        <div class="card-body">
+          <p><strong>Name:</strong> <%= user.firstName %> <%= user.middleName || "" %> <%= user.lastName %></p>
+          <p><strong>SRN:</strong> <%= user.srn %></p>
+          <p><strong>College Email:</strong> <%= user.collegeEmail %></p>
+          <p><strong>Phone:</strong> <%= user.phone %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer") %>
